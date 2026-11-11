@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stock Tracker</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Stock Tracker</h1>
+    <nav>
+      <button class="tab active" data-tab="stocks">Stocks</button>
+      <button class="tab" data-tab="options">Options</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="stocks" class="panel active">
+      <div id="sector-chips" class="chips"></div>
+      <div class="layout">
+        <div class="card">
+          <table id="quotes">
+            <thead><tr>
+              <th>Ticker</th><th class="num">Price</th><th class="num">Change</th>
+              <th class="num">Market cap</th><th class="num">52-wk range</th><th></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+          <p id="quotes-status" class="status"></p>
+        </div>
+        <aside class="card" id="detail">
+          <p class="status">Select a ticker to see its price history.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="options" class="panel">
+      <form id="options-form" class="toolbar">
+        <input id="options-ticker" value="AAPL" maxlength="10" aria-label="Ticker" autocomplete="off">
+        <div class="segmented">
+          <button type="button" class="seg active" data-term="short">Short-term calls</button>
+          <button type="button" class="seg" data-term="long">Long-term calls</button>
+        </div>
+        <button type="submit" class="primary">Load</button>
+      </form>
+      <p class="hint">Short-term: expiring within 45 days. Long-term: expiring 9+ months out. Showing the strikes nearest the current price.</p>
+      <div id="options-results"></div>
+    </section>
+  </main>
+
+  <footer>Data from Yahoo Finance, may be delayed. For personal research only, not investment advice.</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
